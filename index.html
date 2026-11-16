@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chaeeun Yun — Design Portfolio</title>
+<meta name="description" content="Chaeeun Yun is a graphic and UX/UI designer working across editorial, identity, packaging and app design.">
+<meta property="og:title" content="Chaeeun Yun — Design Portfolio">
+<meta property="og:image" content="assets/p04.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <section class="pane on" id="p-index" aria-label="Index">
+    <h2><span>Chaeeun Yun</span><span class="mute" id="count"></span></h2>
+    <div class="scroll" id="list"></div>
+  </section>
+  <section class="pane" id="p-right" aria-label="Detail">
+    <h2><span id="rtitle">Information</span><button id="close" hidden>Close project ×</button></h2>
+    <div class="scroll" id="right"></div>
+  </section>
+  <nav class="foot" aria-label="Main">
+    <button data-go="index" aria-current="true">Chaeeun Yun</button>
+    <button data-go="info" aria-current="false">Information</button>
+  </nav>
+</div>
+<div id="lb" role="dialog" aria-label="Image viewer"><img alt=""></div>
+
+<script src="script.js"></script>
+</body>
+</html>

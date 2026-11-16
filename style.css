@@ -1,0 +1,70 @@
+:root{--bg:#fff;--fg:#111;--mute:#8a8a8a;--line:#d9d9d9;--pad:10px;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--fg:#ececec;--mute:#8d8d8d;--line:#333;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--fg);-webkit-text-size-adjust:100%;font:clamp(14px,.55vw + 10.5px,17px)/1.3 "Hanken Grotesk",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.app{height:100dvh;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr auto;gap:0 var(--pad);padding:max(var(--pad),env(safe-area-inset-top)) max(var(--pad),env(safe-area-inset-right)) max(var(--pad),env(safe-area-inset-bottom)) max(var(--pad),env(safe-area-inset-left))}
+.pane{min-height:0;display:flex;flex-direction:column;border-right:0}
+.pane+.pane{border-left:1px solid var(--line);padding-left:var(--pad)}
+.pane>h2{margin:0 0 var(--pad);padding-bottom:6px;border-bottom:1px solid var(--line);font-weight:400;font-size:inherit;display:flex;justify-content:space-between}
+.scroll{flex:1;overflow-y:auto;min-height:0;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.foot{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:6px;margin-top:var(--pad)}
+.foot button{padding:6px 0}
+.foot button:hover,.foot button[aria-current=true]{text-decoration:underline;text-underline-offset:3px}
+.item{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:var(--pad)}
+.item img,.shots img{display:block;width:100%;height:auto;background:#eee}
+.item>button{width:100%;display:block}
+.cap{display:grid;grid-template-columns:1fr 1fr;gap:var(--pad);margin-top:10px}
+.cap p,.info p{margin:0 0 14px}
+.cap .m{white-space:pre-line}
+.view{text-decoration:underline;text-underline-offset:3px}
+.mute{color:var(--mute)}
+.shots img{margin-bottom:var(--pad);cursor:zoom-in}
+.meta{white-space:pre-line;margin:0 0 14px}
+.desc{max-width:62ch}
+.info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:var(--pad);border-bottom:1px solid var(--line);padding:0 0 26px;margin-bottom:var(--pad)}
+.info:last-child{border:0}
+.info p{margin:0 0 14px}
+.info a{overflow-wrap:anywhere}
+.bio{font-size:1.1em;line-height:1.3}
+.job{margin:0 0 24px}
+.job p{margin:0}
+.job ul{list-style:none;margin:8px 0 0;padding:0}
+.job li{padding-left:1.1em;text-indent:-1.1em;margin-bottom:5px}
+.job li::before{content:"– "}
+.job .r{display:flex;justify-content:space-between;gap:var(--pad)}
+.job .r span:last-child{text-align:right;white-space:nowrap}
+#lb{position:fixed;inset:0;background:var(--bg);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;padding:var(--pad)}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;object-fit:contain}
+@media (max-width:820px){
+ :root{--pad:12px}
+ .app{grid-template-columns:1fr;grid-template-rows:1fr auto}
+ .pane{display:none}.pane.on{display:flex}
+ .pane+.pane{border-left:0;padding-left:0}
+ .cap,.info{grid-template-columns:1fr;gap:6px}
+ .info>div:first-child{color:var(--mute)}
+ .foot button{padding:10px 0}
+ .shots img{margin-bottom:8px}
+}
+@media (max-width:420px){.job .r{flex-direction:column;gap:0}.job .r span:last-child{text-align:left;white-space:normal}}
+@media (min-width:1800px){.app{max-width:2200px;margin:0 auto}}
+@media (prefers-reduced-motion:no-preference){.pane.on .scroll{animation:in .25s ease-out}@keyframes in{from{opacity:.4}}}
+.job{margin-bottom:20px}.job p{margin:0 0 8px}.job ul{margin:0;padding:0;list-style:none}.job li{padding-left:1em;text-indent:-1em;margin-bottom:5px}.job li::before{content:"– "}
+.info p:last-child{margin-bottom:0}.info>div:last-child{max-width:68ch}
+@media (max-width:1100px){.info{grid-template-columns:1fr 2fr}}
+@media (max-width:820px){
+ html{-webkit-text-size-adjust:100%}
+ body{font-size:14.5px}
+ .app{padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
+ .foot{padding:8px 0 2px}.foot button{padding:4px 0}
+ .info{gap:6px;padding-bottom:20px}.info>div:first-child{color:var(--mute)}.bio{font-size:16px}
+ .cap{gap:6px}
+ .item{padding-bottom:16px}
+ #close{padding:2px 0}
+}
+@media (min-width:1700px){body{font-size:16px}.app{padding:14px}}
